@@ -18,6 +18,9 @@ Inštalácia
 
 Nastavenie `temp/` a `log/` na zapisovanie: `chmod a+rw temp log`.
 
+	npm install
+	grunt
+
 
 Štart webservera
 ----------------
