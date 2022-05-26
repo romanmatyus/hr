@@ -1,13 +1,13 @@
 name: coding-standar-checker
 on: [push]
 jobs:
-	check-coding-standard:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v2
-			- uses: shivammathur/setup-php@v2
-				with:
-					php-version: 8.1
+  check-coding-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
 
-			- run: composer create-project nette/coding-standard temp/coding-standard
-			- run: php temp/coding-standard/ecs check app --preset php81
+      - run: composer create-project nette/coding-standard temp/coding-standard
+      - run: php temp/coding-standard/ecs check app --preset php81
