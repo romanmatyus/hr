@@ -1,8 +1,8 @@
-{
+x{
 	"name": "romanmatyus/hr",
 	"description": "HR Demo",
 	"type": "project",
-	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"license": ["MIT"],
 	"require": {
 		"php": ">= 8.1",
 		"nette/application": "^3.1",
