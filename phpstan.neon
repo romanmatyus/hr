@@ -1,0 +1,6 @@
+parameters:
+    phpVersion: 80100
+
+#includes:
+#    - vendor/phpstan/phpstan-nette/extension.neon
+#    - vendor/phpstan/phpstan-nette/rules.neon

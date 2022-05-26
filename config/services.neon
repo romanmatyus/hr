@@ -1,0 +1,14 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	employeeRepository: App\Model\Repository\EmployeeRepository(%appDir%/../data/employees.xml)
+	
+	model:
+		class: App\Model\Model
+		setup:
+			- addRepository(employee, @employeeRepository)
+	-
+		implement: App\Components\EmployeeCard\IEmployeeCardControlFactory
+		parameters:
+			- employee
+		arguments:
+			- %employee%

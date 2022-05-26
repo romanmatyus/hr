@@ -1,0 +1,18 @@
+{block content}
+<div class="container-fluid">
+	<div class="row">
+		{include ../sidebar.latte}
+		<main class="employee-chart col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<div n:snippet="content" class="row py-3">
+				{if count($employees) === 0}
+					<div class="alert alert-warning" role="alert">
+					  Aktuálne nie je v databáze žiadny zamestnanec. Ak si želáte vygenerovať náhodných zmaestnancov pre stestovacie účely, kliknite <a n:href="regenerate" class="btn-link" data-confirm="Skutočne si želáte vygenerovať novú databázu zamestnancov?">SEM</a>.
+					</div>
+				{else}
+					<canvas id="chart" width="400" height="{=30+count($employees)*30}" data-employees='{$employeesList|noescape}' data-age="{$employeesAge|noescape}" data-color='{$employeesColor|noescape}'></canvas>
+				{/}
+			</div>
+		</main>
+	</div>
+</div>
+{/}

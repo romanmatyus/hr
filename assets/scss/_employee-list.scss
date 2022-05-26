@@ -1,0 +1,46 @@
+.employee-list {
+	& .card h3 {
+		font-size: 1.35rem;
+	}
+	& .employee-card {
+		transition: all 400ms ease;
+		&.removed {
+			overflow: hidden;
+			width: 0px;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+		&.card-plus {
+			width: 0;
+			height: 80px;
+			&>.card {
+				width: 80px;
+			}
+			& a.btn {
+				border: none !important;
+			}
+		}
+	}
+	& .card-body {
+		display: table;
+		width: 100%;
+		& .form-check.form-check-inline {
+			margin-top: 0.3rem;
+		}
+		& .card-content {
+			display: table-cell;
+		}
+		& .card-sidebar {
+			display: table-cell;
+			width: 30px;
+			& .btn {
+				color: #afafaf;
+				border: none !important;
+				&:hover {
+					background-color: #afafaf;
+					color: #fff;
+				}
+			}
+		}
+	}
+}

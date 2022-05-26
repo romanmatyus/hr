@@ -1,0 +1,61 @@
+<div class="employee-card col-lg-3 col-md-4 col-sm-6 my-2" data-employee-uuid="{$employee->uuid}">
+	<div class="card border-0 shadow rounded-3 h-100">
+		<div n:snippet="content" class="card-body p-4">
+			{if $edited}
+				<div>
+					<div class="row">
+						<div class="col-12">
+							{form form}
+								<div class="row">
+									<div class="col-12">
+										{input name class=>"form-control form-control-sm", placeholder=>"Meno"}
+									</div>
+									<div class="col-6">
+										{input age class=>"form-control form-control-sm", placeholder=>"Vek", inputmode=>"numeric", autocomplete=>"off"}
+									</div>
+									<div class="col-6">
+										<div class="form-check form-check-inline">
+											<input n:name="gender:male" class="form-check-input">
+											<label n:name="gender:male" class="form-check-label">Muž</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input n:name="gender:female" class="form-check-input">
+											<label n:name="gender:female" class="form-check-label">Žena</label>
+										</div>
+									</div>
+									<div class="col-12">
+										{input submit class=>"btn btn-sm btn-success ajax"}
+										<a n:href="back!" class="btn btn-sm btn-secondary ajax{if !$employee->stored} remove-after-click{/}">Zrušiť</a>
+									</div>
+								</div>
+							{/form}
+						</div>
+					</div>
+				</div>
+			{else}
+				<div class="card-content">
+					<div class="row">
+						<div class="col-12">
+							<h3>{$employee->name}</h3>
+								{if $employee->age}
+									Vek: {$employee->age}{if $employee->gender},{/}
+							{/if}
+							{if $employee->gender}
+								Pohlavie:
+								{if $employee->gender === \App\Model\Entity\Gender::Male}
+									<i class="fas fa-mars text-info"></i>
+								{elseif $employee->gender === \App\Model\Entity\Gender::Female}
+									<i class="fas fa-venus text-danger"></i>
+								{/if}
+							{/if}
+						</div>
+					</div>
+				</div>
+				<div class="card-sidebar">
+					<a n:href="edit!" class="btn btn-outline-secondary btn-sm ajax edit-employee-button"><i class="fas fa-user-edit"></i></a>
+					<a n:href="remove!" class="btn btn-outline-secondary btn-sm ajax remove-after-click" data-confirm="Skutočne si želáte odstrániť zamestnanca?"><i class="fas fa-user-times"></i></a>
+				</div>
+			{/if}
+		</div>
+	</div>
+</div>

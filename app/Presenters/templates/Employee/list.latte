@@ -1,0 +1,27 @@
+{block content}
+<div class="container-fluid">
+	<div class="row">
+		{include ../sidebar.latte}
+		<main class="employee-list col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<div n:snippet="content" class="row py-3">
+				{if count($employees) === 0}
+					<div class="alert alert-warning" role="alert">
+					  Aktuálne nie je v databáze žiadny zamestnanec. Ak si želáte vygenerovať náhodných zamestnancov pre testovacie účely, kliknite <a n:href="regenerate" class="btn-link" data-confirm="Skutočne si želáte vygenerovať novú databázu zamestnancov?">SEM</a>.
+					</div>
+				{/}
+				{foreach $employees as $employee}
+					{control employeeCard-{$employee->uuid}}
+				{/}
+				<div class="employee-card my-2 card-plus">
+					<div class="card border-0 shadow rounded-3 h-100">
+						<div class="card-body p-4">
+							<div class="card-content">
+								<a n:href="add!" class="btn btn-outline-secondary btn-sm ajax"><i class="fas fa-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
