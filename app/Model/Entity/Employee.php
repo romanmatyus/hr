@@ -35,23 +35,23 @@ class Employee implements IEntity
 	}
 
 
-	public function setName(string $name): self
+	public function setName(string $name = null): self
 	{
 		$this->name = $name;
 		return $this;
 	}
 
 
-	public function setAge(int $age): self
+	public function setAge(int $age = null): self
 	{
 		$this->age = $age;
 		return $this;
 	}
 
 
-	public function setGender(string $gender): self
+	public function setGender(string $gender = null): self
 	{
-		if (!in_array($gender, [Gender::Male, Gender::Female], true)) {
+		if (!in_array($gender, [Gender::Male, Gender::Female], true) && $gender !== null) {
 			throw new Nette\ArgumentOutOfRangeException('Gender must be male or female');
 		}
 		$this->gender = $gender;

@@ -11,6 +11,7 @@ use Nette;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Utils\ArrayHash;
+use ReflectionClass;
 
 
 class EmployeeCardControl extends Control
@@ -85,8 +86,14 @@ class EmployeeCardControl extends Control
 
 	public function formSucceeded(Form $form, ArrayHash $data): void
 	{
+		$eRef = new ReflectionClass($this->employee);
 		foreach ($data as $key => $value) {
-			$this->employee->{$key} = $value;
+			if ($value === null || $value === '') {
+				$this->employee->{$key} = null;
+			} else {
+				settype($value, str_replace('?', '', (string) $eRef->getProperty($key)->getType()));
+				$this->employee->{$key} = $value;
+			}
 		}
 		$this->employee->setStored(true);
 		$this->model->employee->persist($this->employee);
