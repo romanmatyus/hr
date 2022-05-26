@@ -70,12 +70,7 @@ class EmployeeCardControl extends Control
 					Gender::Female => 'Žena',
 				]);
 
-				$data = [
-					'name' => $this->employee->name,
-					'age' => $this->employee->age,
-					'gender' => ($this->employee->gender) ? $this->employee->gender : null,
-				];
-				$c->setDefaults($data);
+				$c->setDefaults($this->employee->serialize());
 
 				$c->addSubmit('submit', 'Uložiť');
 
@@ -90,14 +85,8 @@ class EmployeeCardControl extends Control
 
 	public function formSucceeded(Form $form, ArrayHash $data): void
 	{
-		if ($data->name) {
-			$this->employee->name = $data->name;
-		}
-		if ($data->age) {
-			$this->employee->age = $data->age;
-		}
-		if ($data->gender) {
-			$this->employee->gender = constant('App\Model\Entity\Gender::' . ucfirst($data->gender));
+		foreach ($data as $key => $value) {
+			$this->employee->{$key} = $value;
 		}
 		$this->employee->setStored(true);
 		$this->model->employee->persist($this->employee);
