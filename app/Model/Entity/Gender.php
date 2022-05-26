@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
-class Gender {
-	const Male = 'male';
-	const Female = 'female';
+class Gender
+{
+	public const Male = 'male';
+	public const Female = 'female';
 }

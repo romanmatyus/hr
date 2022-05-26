@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Components\EmployeeCard;
 
-use App\Model\Model;
 use App\Model\Entity\Employee;
 use App\Model\Entity\Gender;
+use App\Model\Model;
 use Nette;
-use Nette\Utils\ArrayHash;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Utils\ArrayHash;
 
 
 class EmployeeCardControl extends Control
 {
-	const TPL = __DIR__ . '/template.latte';
+	public const TPL = __DIR__ . '/template.latte';
 
 	/** @var callable[] */
 	public $onRemove;

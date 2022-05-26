@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Presenters;
 
-use App\Model\Model;
+use App\Components\EmployeeCard\IEmployeeCardControlFactory;
 use App\Model\Entity\Employee;
 use App\Model\Entity\Gender;
-use App\Components\EmployeeCard\IEmployeeCardControlFactory;
+use App\Model\Model;
 use DateTime;
 use Nette\Application\UI\Multiplier;
 use Nette\ComponentModel\IComponent;
@@ -84,7 +84,7 @@ final class EmployeePresenter extends BasePresenter
 
 	public function actionRegenerate()
 	{
-		for ($i=0;$i<6;$i++) {
+		for ($i=0; $i<6; $i++) {
 			$data = Json::decode(file_get_contents('https://api.namefake.com'));
 			$e = (new \App\Model\Entity\Employee)
 				->setName($data->name)

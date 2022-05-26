@@ -69,8 +69,9 @@ class EmployeeRepository implements IRepository
 
 	public function loadFromStorage(): void
 	{
-		if (realpath($this->storagePath) === false || !file_exists($this->storagePath))
+		if (realpath($this->storagePath) === false || !file_exists($this->storagePath)) {
 			return;
+		}
 		$dom = new DOMDocument;
 		$dom->loadXML(file_get_contents($this->storagePath));
 
@@ -111,13 +112,13 @@ class EmployeeRepository implements IRepository
 			$xmlString .= "\t<" . (new ReflectionClass($e))->getShortName() . ">\n";
 			foreach ($e->serialize() as $key => $value) {
 				$valueString = $value;
-				$xmlString .= "\t\t<" . $key . ">";
+				$xmlString .= "\t\t<" . $key . '>';
 				$xmlString .= $valueString;
-				$xmlString .= "</" . $key .">\n";
+				$xmlString .= '</' . $key . ">\n";
 			}
 			$xmlString .= "\t</" . (new ReflectionClass($e))->getShortName() . ">\n";
 		}
-		$xmlString .= "</data>";
+		$xmlString .= '</data>';
 		file_put_contents($this->storagePath, $xmlString);
 	}
 }

@@ -26,8 +26,9 @@ class Employee implements IEntity
 
 	public function __construct(string $uuid = null)
 	{
-		if ($uuid !== null && !preg_match('#^[a-zA-Z0-9_]+$#D', $uuid))
+		if ($uuid !== null && !preg_match('#^[a-zA-Z0-9_]+$#D', $uuid)) {
 			throw new Nette\ArgumentOutOfRangeException('UUID must be non-empty alphanumeric string');
+		}
 		$this->uuid = ($uuid)
 			? $uuid
 			: md5(uniqid(md5(self::class), true));
@@ -50,7 +51,7 @@ class Employee implements IEntity
 
 	public function setGender(string $gender): self
 	{
-		if (!in_array($gender, [Gender::Male, Gender::Female])) {
+		if (!in_array($gender, [Gender::Male, Gender::Female], true)) {
 			throw new Nette\ArgumentOutOfRangeException('Gender must be male or female');
 		}
 		$this->gender = $gender;
@@ -88,7 +89,6 @@ class Employee implements IEntity
 			} else {
 				$data[$property->getName()] = $this->{$property->getName()};
 			}
-
 		}
 		return array_filter($data);
 	}

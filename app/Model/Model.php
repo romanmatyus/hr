@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use App\Model\Repository\IRepository;
 use App\Model\Repository\EmployeeRepository;
+use App\Model\Repository\IRepository;
 
 /**
  * @property-read EmployeeRepository $employee
