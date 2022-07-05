@@ -70,6 +70,8 @@ class EmployeeCardControl extends Control
 					Gender::Male => 'Muž',
 					Gender::Female => 'Žena',
 				]);
+				$c->addText('position', 'Pozícia')
+					->setAttribute('placeholder', 'Pozícia');
 
 				$c->setDefaults($this->employee->serialize());
 

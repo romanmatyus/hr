@@ -13,6 +13,7 @@ use ReflectionClass;
  * @property string|null $name
  * @property int $age
  * @property string $gender
+ * @property string|null $position
  * @property-read bool $stored
  */
 class Employee implements IEntity
@@ -21,6 +22,7 @@ class Employee implements IEntity
 	private ?string $name = null;
 	private ?int $age = null;
 	private ?string $gender = null;
+	private ?string $position = null;
 	private bool $stored = false;
 
 
@@ -55,6 +57,13 @@ class Employee implements IEntity
 			throw new Nette\ArgumentOutOfRangeException('Gender must be male or female');
 		}
 		$this->gender = $gender;
+		return $this;
+	}
+
+
+	public function setPosition(string $position = null): self
+	{
+		$this->position = $position;
 		return $this;
 	}
 
